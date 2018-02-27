@@ -6,6 +6,13 @@
 #include <Python.h>
 
 #include "gito.h"
+
+#define MAX_PY_ENV_PATH_LEN 1028
+#ifdef CURPATH
+#define MAX_PATH_LEN 256
+char script_file_path[MAX_PATH_LEN] = CURPATH;
+#endif
+
 using namespace std;
 
 void gito_help()
@@ -29,10 +36,12 @@ void gito_help()
 }
 void git_operation(int cmd, char* para)
 {
+	char pyenv[MAX_PY_ENV_PATH_LEN];
     Py_Initialize();//初始化python
 
 	PyRun_SimpleString("import sys");
-	PyRun_SimpleString("sys.path.append('/cktdisk/01-work/05-mysh/git_operation')");
+	sprintf(pyenv,"sys.path.append('%s')",script_file_path);
+	PyRun_SimpleString(pyenv); //Add the path of python file to system path
 
 	PyObject *pModule = NULL;
 	PyObject *pFunc = NULL;
