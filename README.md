@@ -14,7 +14,8 @@ usage: gito [-h|p|P|a|s|auto|v]
 		git add .
 	-s,--status
 		git status .
-	auto,
+	-A,--auto
 		git add and push automatically
 	-v,--version
 		show gito version
+
