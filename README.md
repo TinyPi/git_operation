@@ -1,5 +1,5 @@
 THIS is a simplified command set for git
-
+(User c language)
 Move gito into your evironment PATH.
 
 usage: gito [-h|p|P|a|s|auto|v]
